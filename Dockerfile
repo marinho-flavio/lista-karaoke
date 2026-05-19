@@ -22,8 +22,6 @@ FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
 WORKDIR /app
 EXPOSE 8080
 COPY --from=publish /app/publish .
-# Copia a pasta docs para que a importação de CSV funcione no container
-COPY docs ./docs
 # Copia o build do Angular para a pasta que o .NET espera (wwwroot)
 COPY --from=build-node /src/dist/ListaKaraoke.Client/browser ./wwwroot
 
