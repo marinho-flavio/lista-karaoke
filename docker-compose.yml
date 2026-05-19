@@ -1,21 +1,4 @@
 services:
-  db:
-    image: postgres:16-alpine
-    container_name: karaoke-db
-    environment:
-      POSTGRES_DB: karaoke_db
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres_password_change_me
-    ports:
-      - "5433:5432"
-    volumes:
-      - karaoke_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d karaoke_db"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
   app:
     build:
       context: .
@@ -25,10 +8,7 @@ services:
       - "8080:8080"
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
-      - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=karaoke_db;Username=postgres;Password=postgres_password_change_me
-    depends_on:
-      db:
-        condition: service_healthy
-
-volumes:
-  karaoke_data:
+      # Altere 'IP_OU_NOME_DO_CONTAINER_DB' para o IP da sua máquina ou nome do container do banco existente
+      - ConnectionStrings__DefaultConnection=Host=host.docker.internal;Port=5432;Database=karaoke_db;Username=postgres;Password=postgres_password_change_me
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
