@@ -1,0 +1,135 @@
+/* Estilos globais já estão no styles.css */
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+.container {
+  padding: 0 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: calc(100vh - 64px); /* Subtrai altura da toolbar */
+  display: flex;
+  flex-direction: column;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.search-box {
+  padding-top: 20px;
+  padding-bottom: 10px;
+  flex: 0 0 auto;
+}
+
+.search-box button i {
+  font-size: 18px;
+}
+
+.table-container {
+  flex: 1 1 auto;
+  position: relative;
+  background: white;
+  border-radius: 4px 4px 0 0;
+  overflow: auto; /* Scroll aqui */
+  border: 1px solid #e0e0e0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Header fixo da tabela */
+th.mat-mdc-header-cell {
+  position: sticky;
+  top: 0;
+  background-color: white !important;
+  z-index: 2;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+tr.mat-mdc-row:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr.mat-mdc-row:hover {
+  background-color: #f1f1f1;
+}
+
+.paginator-container {
+  flex: 0 0 auto;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  margin-bottom: 20px;
+}
+
+.loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.7);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cod-cell {
+  font-weight: bold;
+  color: #3f51b5;
+}
+
+.mat-column-codigo {
+  flex: 0 0 80px;
+  width: 80px;
+  padding-left: 16px !important;
+}
+
+.mat-column-cantor {
+  font-weight: 500;
+}
+
+.titulo {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.letra-inicio {
+  color: #999;
+  font-size: 12px;
+  font-style: italic;
+  margin-top: 2px;
+}
+
+.no-results {
+  padding: 30px;
+  text-align: center;
+  color: #666;
+}
+
+mat-toolbar {
+  flex: 0 0 auto;
+}
+
+/* Ajustes para Celular */
+@media (max-width: 600px) {
+  .container {
+    padding: 0 10px;
+    height: calc(100vh - 56px);
+  }
+  
+  .titulo {
+    font-size: 15px;
+  }
+  
+  .search-box {
+    padding-top: 10px;
+  }
+}
