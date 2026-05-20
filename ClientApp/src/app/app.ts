@@ -31,6 +31,7 @@ import { MusicaService, Musica } from './services/musica.service';
 })
 export class AppComponent implements OnInit {
   filtro: string = '';
+  alfabeto: string[] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
   musicas: Musica[] = [];
   total = 0;
   tamanhoPagina = 50;
@@ -45,6 +46,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.buscar();
+  }
+
+  buscarPorLetra(letra: string) {
+    this.filtro = letra;
+    this.buscar(true);
   }
 
   buscar(novaBusca: boolean = false) {

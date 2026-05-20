@@ -12,6 +12,19 @@
         <i class="fa-solid fa-magnifying-glass"></i>
       </button>
     </mat-form-field>
+
+    <div class="alphabet-container">
+      <button mat-button 
+              *ngFor="let letra of alfabeto" 
+              (click)="buscarPorLetra(letra)"
+              [class.active]="filtro === letra"
+              class="letter-button">
+        {{letra}}
+      </button>
+      <button mat-button (click)="filtro = ''; buscar(true)" class="letter-button">
+        Limpar
+      </button>
+    </div>
   </div>
 
   <div class="loading-shade" *ngIf="carregando">

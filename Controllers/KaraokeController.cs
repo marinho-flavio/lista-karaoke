@@ -24,10 +24,20 @@ public class KaraokeController : ControllerBase
         if (!string.IsNullOrWhiteSpace(filtro))
         {
             filtro = filtro.ToLower();
-            query = query.Where(m => 
-                m.Cantor.ToLower().Contains(filtro) || 
-                m.Titulo.ToLower().Contains(filtro) ||
-                m.Codigo.Contains(filtro));
+            
+            if (filtro.Length == 1 && char.IsLetter(filtro[0]))
+            {
+                // Se for apenas uma letra, busca artistas que COMEÇAM com ela
+                query = query.Where(m => m.Cantor.ToLower().StartsWith(filtro));
+            }
+            else
+            {
+                // Busca geral para termos maiores
+                query = query.Where(m => 
+                    m.Cantor.ToLower().Contains(filtro) || 
+                    m.Titulo.ToLower().Contains(filtro) ||
+                    m.Codigo.Contains(filtro));
+            }
         }
 
         var totalItens = await query.CountAsync();
