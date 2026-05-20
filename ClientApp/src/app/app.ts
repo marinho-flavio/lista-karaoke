@@ -35,6 +35,7 @@ export class AppComponent implements OnInit {
   musicas: Musica[] = [];
   total = 0;
   tamanhoPagina = 50;
+  opcoesTamanhoPagina = [50, 100, 250, 500];
   paginaAtual = 1;
   carregando = false;
   displayedColumns: string[] = ['codigo', 'cantor', 'titulo'];

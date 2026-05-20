@@ -64,6 +64,7 @@
   <div class="paginator-container">
     <mat-paginator [length]="total"
                    [pageSize]="tamanhoPagina"
+                   [pageSizeOptions]="opcoesTamanhoPagina"
                    [pageIndex]="paginaAtual - 1"
                    (page)="aoMudarPagina($event)"
                    aria-label="Selecionar página">
