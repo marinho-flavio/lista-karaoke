@@ -4,6 +4,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: karaoke-app
+    restart: unless-stopped
     ports:
       - "8080:8080"
     environment:
